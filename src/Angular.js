@@ -167,8 +167,11 @@ var /** holds major version number for IE or NaN for real browsers */
     toString          = Object.prototype.toString,
     ngMinErr          = minErr('ng'),
 
+    // whenever entering from the test suite, exports is undefined
+    exports = exports || window,
+
     /** @name angular */
-    angular           = window.angular || (window.angular = {}),
+    angular           = exports.angular || (exports.angular = {}),
     angularModule,
     nodeName_,
     uid               = 0;
@@ -253,7 +256,7 @@ function forEach(obj, iterator, context) {
         }
       }
     } else if (obj.forEach && obj.forEach !== forEach) {
-        obj.forEach(iterator, context);
+      obj.forEach(iterator, context);
     } else {
       for (key in obj) {
         if (obj.hasOwnProperty(key)) {
@@ -1124,7 +1127,7 @@ function toKeyValue(obj) {
                    (arrayValue === true ? '' : '=' + encodeUriQuery(arrayValue, true)));
       });
     } else {
-    parts.push(encodeUriQuery(key, true) +
+      parts.push(encodeUriQuery(key, true) +
                (value === true ? '' : '=' + encodeUriQuery(value, true)));
     }
   });
@@ -1511,7 +1514,7 @@ function assertArg(arg, name, reason) {
 
 function assertArgFn(arg, name, acceptArrayAnnotation) {
   if (acceptArrayAnnotation && isArray(arg)) {
-      arg = arg[arg.length - 1];
+    arg = arg[arg.length - 1];
   }
 
   assertArg(isFunction(arg), name, 'not a function, got ' +

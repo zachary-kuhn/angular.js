@@ -139,7 +139,7 @@ function publishExternalAPI(angular){
     '$$csp': csp
   });
 
-  angularModule = setupModuleLoader(window);
+  angularModule = setupModuleLoader(exports);
   try {
     angularModule('ngLocale');
   } catch (e) {

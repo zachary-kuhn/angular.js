@@ -1,4 +1,5 @@
-  if (window.angular.bootstrap) {
+
+  if (angular.bootstrap) {
     //AngularJS is already loaded, so we can return here...
     console.log('WARNING: Tried to load angular more than once.');
     return;
@@ -14,4 +15,6 @@
     angularInit(document, bootstrap);
   });
 
-})(window, document);
+  return angular;
+
+});

@@ -137,8 +137,7 @@
       var originalPreventDefault = evnt.preventDefault,
           appWindow = element.ownerDocument.defaultView,
           fakeProcessDefault = true,
-          finalProcessDefault,
-          angular = appWindow.angular || {};
+          finalProcessDefault;
 
       // igor: temporary fix for https://bugzilla.mozilla.org/show_bug.cgi?id=684208
       angular['ff-684208-preventDefault'] = false;
